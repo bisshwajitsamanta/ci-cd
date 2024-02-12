@@ -17,6 +17,7 @@ I have containerized a Python Flask App using Docker and deployed the App to a E
 
 
 ## Application setup Structure
+![](Directory-structure.png)
  * __.github/workflows__ -> The `deployment.yaml` job is to Build the Docker Image taking input from Dockerfile and Deploy to EKS Cluster. In `deployment.yaml` we have used `workflow_dispatch` so that on every Pull Request getting merge to main branch that shouldn't trigger a build and deploy. However, if that is a requirement we have put code commented for push against `main` branch.
  * __app-helm-chart__ -> Here we have templates directory which contains the template for `deployment.yaml and service.yaml`, and outside the `charts.yaml` and `values.yaml` Template directory is created so that we can apply the same helm chart version against multiple environments.
  * __application__ -> The application Directory contains the source code for the application. In this case we have a python program which lies under `src` directory under `application` containing `app.py`. Also we have `requirements.txt` which basically helps in installing the necessary packages required by `pip` command to install for the application.

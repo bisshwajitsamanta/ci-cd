@@ -13,7 +13,8 @@ This guide provides step-by-step instructions on how to set up an Amazon EKS (El
 ## Setup Application onto EKS Cluster
 
 I have containerized a Python Flask App using Docker and deployed the App to a EKS (Elastic Kubernetes Service) cluster using a CI/CD pipeline called Github actions which come inbuilt along with GitHub. I have associated the pipeline's one end to the Github repository (containing the application code), and connected the other end to the EKS cluster. The EKS Cluster is set up using Terraform Code in local machine and the state file is stored in aws s3 bucket. Below is the architecture diagram of the deployed App :
-![CICD.drawio.png](..%2F..%2FDownloads%2FCICD.drawio.png)
+![](architecture.png)
+
 
 ## Application setup Structure
  * __.github/workflows__ -> The deployment yaml job is to Build the Docker Image taking input from Dockerfile and Deploy to EKS Cluster. In deployment.yaml we have used workflow_dispatch so that on every Pull Request getting merge to main branch that shouldn't trigger a build and deploy. However, if that is a requirement we have put code commented for push against `main` branch.

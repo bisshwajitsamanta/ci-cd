@@ -44,9 +44,6 @@ jobs:
           run: |
             aws eks update-kubeconfig --name ${{ secrets.EKS_CLUSTER }} --region ${{ secrets.AWS_REGION }}
 
-        - name: Create Kubernetes namespace
-          run: kubectl create namespace app-namespace
-
         - name: Install Helm
           run: |
             curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
@@ -55,4 +52,4 @@ jobs:
 
         - name: Deploy Helm Chart
           run: |
-            helm install app-helm-chart ./app-helm-chart --namespace app-namespace
+            helm upgrade --install app-helm-chart ./app-helm-chart --namespace app-namespace --create-namespace
